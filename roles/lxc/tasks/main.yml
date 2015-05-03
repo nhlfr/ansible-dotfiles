@@ -1,0 +1,11 @@
+---
+- name: Install Docker and Docker Compose dependencies
+  dnf: name={{ item }} state=present
+  sudo: True
+  with_items:
+      - docker
+      - libyaml-devel
+- name: Install Docker Compose
+  pip: name=docker-compose virtualenv=~/.virtualenvs/docker
+- name: Install vagrant-lxc
+  dnf: name=vagrant-lxc state=present

@@ -1,0 +1,7 @@
+---
+- name: Install python-dev
+  dnf: name=python-devel state=present
+  sudo: True
+- name: Install virtualenvwrapper
+  dnf: name=python-virtualenvwrapper state=present
+  sudo: True

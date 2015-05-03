@@ -1,0 +1,6 @@
+---
+- name: Install Go
+  dnf: name=golang state=present
+  sudo: True
+- name: Create Go directory
+  file: path=~/go state=directory

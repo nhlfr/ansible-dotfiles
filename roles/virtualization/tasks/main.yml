@@ -1,0 +1,23 @@
+---
+- name: Install virtualization package group
+  dnf: name="@virtualization" state=present
+  sudo: True
+- name: Install Vagrant (with libvirt support)
+  dnf: name={{ item }} state=present
+  with_items:
+      - libvirt-devel
+      - vagrant
+      - vagrant-libvirt
+- name: Add VirtualBox repository
+  get_url: url=http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo dest=/etc/yum.repos.d
+  sudo: True
+- name: Install VirtualBox
+  dnf: name={{ item }} state=present
+  with_items:
+      - kernel-headers
+      - kernel-devel
+      - dkms
+      - VirtualBox-4.3
+- name: Configure VirtualBox kernel module
+  command: /etc/init.d/vboxdrv setup
+  sudo: True

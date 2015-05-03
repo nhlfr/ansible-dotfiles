@@ -1,0 +1,8 @@
+---
+- name: Install zsh
+  dnf: name=zsh state=present
+  sudo: True
+- name: Clone ohmyzsh repo
+  git: repo=ssh://git@github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh depth=1
+- name: Configure zsh
+  template: src=zshrc.j2 dest=~/.zshrc

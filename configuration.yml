@@ -1,0 +1,11 @@
+---
+- hosts: all
+  connection: local
+  roles:
+  - base
+  - zsh
+  - golang
+  - python
+  - virtualization
+  - lxc
+  - openstack

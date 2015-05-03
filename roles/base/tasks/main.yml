@@ -1,0 +1,9 @@
+---
+- name: Install development tools
+  dnf: name="@Development tools" state=present
+  sudo: True
+- name: Install common *-devel packages
+  dnf: name={{ item }} state=present
+  sudo: True
+  with_items:
+      - postgresql-devel

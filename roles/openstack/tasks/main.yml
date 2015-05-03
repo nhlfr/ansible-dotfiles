@@ -1,0 +1,26 @@
+---
+- name: Install OpenStack clients
+  pip: name={{ item }} virtualenv=~/.virtualenvs/openstack
+  with_items:
+      - python-keystoneclient
+      - python-novaclient
+      - python-neutronclient
+      - python-glanceclient
+      - python-cinderclient
+      - python-heatclient
+      - python-ceilometerclient
+      - python-magnumclient
+- name: Clone Fuel repos
+  git: repo=ssh://git@github.com/stackforge/{{ item }}.git dest=~/{{ item }}
+  with_items:
+      - fuel-dev-tools
+      - fuel-devops
+- name: Install Fuel packages
+  pip: name=~/{{ item }} virtualenv=~/.virtualenvs/fuel extra_args='-e'
+  with_items:
+      - fuel-dev-tools
+      - fuel-devops
+- name: Clone Kolla repo
+  git: repo=ssh://git@github.com/stackforge/kolla.git dest=~/kolla
+- name: Clone devstack-vagrant repo
+  git: repo=ssh://git@github.com/openstack-dev/devstack-vagrant dest=~/devstack-vagrant
