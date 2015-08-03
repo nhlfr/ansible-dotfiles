@@ -6,4 +6,6 @@
   dnf: name={{ item }} state=present
   sudo: True
   with_items:
+      - expect
+      - expect-devel
       - postgresql-devel

@@ -15,6 +15,7 @@
   with_items:
       - fuel-dev-tools
       - fuel-devops
+      - fuel-main
 - name: Install Fuel packages
   pip: name=~/{{ item }} virtualenv=~/.virtualenvs/fuel extra_args='-e'
   with_items:

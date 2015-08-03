@@ -21,3 +21,11 @@
 - name: Configure VirtualBox kernel module
   command: /etc/init.d/vboxdrv setup
   sudo: True
+- name: Clone virtualbox-utils repository
+  git: repo=ssh://git@github.com/nihilifer/virtualbox-utils.git dest=~/virtualbox-utils
+- name: Install virtualbox-utils
+  pip: name=~/virtualbox-utils virtualenv=~/.virtualenvs/virtualbox extra_args='-e'
+- name: Install VirtualBox Extension Pack
+  command: vbox-utils-extpack
+  environment:
+      PATH: "{{ ansible_env.HOME }}/.virtualenvs/virtualbox/bin:{{ ansible_env.PATH }}"
