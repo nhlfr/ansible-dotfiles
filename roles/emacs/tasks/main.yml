@@ -1,0 +1,6 @@
+---
+- name: Install Emacs
+  dnf: name=emacs-nox state=present
+  sudo: True
+- name: Fetch Emacs configuration
+  command: wget https://raw.githubusercontent.com/nihilifer/emacs-config/master/.emacs -O ~/.emacs
