@@ -8,4 +8,6 @@
   with_items:
       - expect
       - expect-devel
+      - libevent
+      - libevent-devel
       - postgresql-devel

@@ -16,11 +16,25 @@
       - fuel-dev-tools
       - fuel-devops
       - fuel-main
+      - fuel-web
+      - fuel-agent
+      - fuel-astute
+      - fuel-ostf
+      - fuel-library
+      - fuel-docs
 - name: Install Fuel packages
   pip: name=~/{{ item }} virtualenv=~/.virtualenvs/fuel extra_args='-e'
   with_items:
       - fuel-dev-tools
       - fuel-devops
+      - fuel-web/fuel_upgrade_system/fuel_package_updates
+      - fuel-web/fuel_upgrade_system/fuel_upgrade
+      - fuel-web/fuelmenu
+      - fuel-web/nailgun
+      - fuel-web/network_checker
+      - fuel-web/shotgun
+      - fuel-agent
+      - fuel-ostf
 - name: Clone Kolla repo
   git: repo=ssh://git@github.com/stackforge/kolla.git dest=~/kolla
 - name: Clone devstack-vagrant repo
