@@ -1,0 +1,6 @@
+---
+- name: Add Spotify repository
+  command: dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repository
+  sudo: True
+- name: Install Spotify client
+  dnf: name=spotify-client state=present

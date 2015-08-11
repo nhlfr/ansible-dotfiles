@@ -23,6 +23,7 @@
   sudo: True
 - name: Clone virtualbox-utils repository
   git: repo=ssh://git@github.com/nihilifer/virtualbox-utils.git dest=~/virtualbox-utils
+  ignore_errors: True
 - name: Install virtualbox-utils
   pip: name=~/virtualbox-utils virtualenv=~/.virtualenvs/virtualbox extra_args='-e'
 - name: Install VirtualBox Extension Pack

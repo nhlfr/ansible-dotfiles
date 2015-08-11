@@ -6,8 +6,12 @@
   dnf: name={{ item }} state=present
   sudo: True
   with_items:
+      - createrepo
+      - debmirror
       - expect
       - expect-devel
+      - fakeroot
       - libevent
       - libevent-devel
       - postgresql-devel
+      - rpm-build
